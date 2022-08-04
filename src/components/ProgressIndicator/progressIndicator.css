@@ -122,12 +122,12 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  margin: 0 20rem 4rem 0;
+  margin: 0 16rem 4rem 0;
 }
 
 #button-left {
   position: absolute;
   left: 0;
   bottom: 0;
-  margin: 0 0 4rem 20rem;
+  margin: 0 0 4rem 16rem;
 }

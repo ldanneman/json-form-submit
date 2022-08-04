@@ -18,10 +18,6 @@ const steps = [
     name: "Step 3",
     component: TextField,
   },
-  {
-    name: "Step 4",
-    component: TextField,
-  },
 ];
 function App() {
   const [data, setData] = React.useState([]);
