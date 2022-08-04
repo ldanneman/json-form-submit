@@ -6,7 +6,7 @@ function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [currentData, setCurrentData] = React.useState("");
   const [results, setResults] = React.useState([]);
-  
+
   const Item = steps[currentStep]?.component || null;
 
   React.useEffect(() => {}, [results]);
@@ -75,7 +75,7 @@ function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
       {currentStep === steps.length && (
         <div className="results-wrapper">
           {results.map((result, i) => (
-            <div>
+            <div className="results-container">
               <div
                 className="result"
                 style={{

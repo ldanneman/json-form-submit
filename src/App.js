@@ -26,7 +26,6 @@ const steps = [
 function App() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {}, [data]);
-  // console.log("thedata", data);
 
   const handlePromise = async (data) => {
     const success = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
@@ -58,7 +57,6 @@ function App() {
 
   return (
     <div className="App">
-      <div>HOMEPAGE</div>
       <ProgessIndicator
         steps={steps}
         data={data}
@@ -66,15 +64,6 @@ function App() {
         validator={isJSON}
         onSubmit={handlePromise}
       />
-      {/* <form> */}
-      <input
-        type="text"
-        id="fname"
-        name="fname"
-        onChange={(e) => console.log(e.target.value)}
-      ></input>
-      <button onClick={handlePromise}>Submit</button>
-      {/* </form> */}
     </div>
   );
 }

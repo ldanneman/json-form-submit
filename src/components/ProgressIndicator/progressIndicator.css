@@ -78,6 +78,17 @@
     content: none;
   }
 
+  .results-wrapper {
+    /* display: flex;
+    align-items: center;
+    margin-top: 20px; */
+  }
+  .results-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 20px;
+  }
   .result{
     width: 2rem;
     height: 2rem;
