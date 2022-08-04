@@ -21,7 +21,6 @@ const steps = [
 ];
 function App() {
   const [data, setData] = React.useState([]);
-  React.useEffect(() => {}, [data]);
 
   const handleApiCall = async () => {
     const success = (Math.floor(Math.random() * 2) + 1) % 2 === 0;

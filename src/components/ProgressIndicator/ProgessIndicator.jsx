@@ -9,7 +9,6 @@ function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
 
   const Item = steps[currentStep]?.component || null;
 
-  React.useLayoutEffect(() => {}, [results, setResults, data]);
   const onNext = async () => {
     if (currentData.length < 3 || !validator(currentData)) {
       alert("Your submission is invalid");
