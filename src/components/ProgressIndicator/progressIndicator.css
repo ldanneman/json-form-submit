@@ -1,122 +1,133 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.border{
-    /* display: flex;
-align-items: center;
-justify-content: center;
-    flex-direction: column;
-    border: 1px solid black; */
-    text-align: center;
-    border: 1px solid black;
-    height: 35em;
-    width: 50%;
-    padding: 1rem;
-/* width: 50%;
-height: 50rem; */
+.border {
+  text-align: center;
+  border: 1px solid black;
+  height: 35em;
+  width: 50%;
+  padding: 1rem;
+  position: relative;
+}
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .stepper-wrapper {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  .stepper-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-  
-    @media (max-width: 768px) {
-      font-size: 12px;
-    }
-  }
-  
-  .stepper-item::before {
-    position: absolute;
-    content: "";
-    border-bottom: 2px solid #ccc;
-    width: 100%;
-    top: 20px;
-    left: -50%;
-    z-index: 2;
-  }
-  
-  .stepper-item::after {
-    position: absolute;
-    content: "";
-    border-bottom: 2px solid #ccc;
-    width: 100%;
-    top: 20px;
-    left: 50%;
-    z-index: 2;
-  }
-  
-  .stepper-item .step-counter {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #ccc;
-    margin-bottom: 6px;
-  }
-  
-  .stepper-item.active {
-    font-weight: bold;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 
+  @media (max-width: 768px) {
+    font-size: 12px;
   }
-  .stepper-item.active .step-counter {
-    border: 2px solid black;
-  }
-  
-  .stepper-item.completed .step-counter {
-    background-color: #4bb543;
-  }
-  
-  .stepper-item.completed::after {
-    position: absolute;
-    content: "";
-    border-bottom: 2px solid #4bb543;
-    width: 100%;
-    top: 20px;
-    left: 50%;
-    z-index: 3;
-  }
-  
-  .stepper-item:first-child::before {
-    content: none;
-  }
-  .stepper-item:last-child::after {
-    content: none;
-  }
+}
 
-  .results-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 2rem;
-  }
-  .results-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-left: 20px;
-    width: 15rem;
-  }
-  .result{
-    width: 2rem;
-    height: 2rem;
-    margin: 1rem;
-  }
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+.stepper-item.active .step-counter {
+  border: 2px solid black;
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #4bb543;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #4bb543;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
+}
+
+.results-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 2rem;
+}
+.results-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+  width: 15rem;
+}
+.result {
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+#button-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 0 20rem 4rem 0;
+}
+
+#button-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: 0 0 4rem 20rem;
+}
