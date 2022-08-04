@@ -29,8 +29,8 @@ function App() {
 
   const handlePromise = async (data) => {
     const success = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
-    const success2 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
-    const success3 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
+    // const success2 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
+    // const success3 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
     // const success = 1 + 1 === 2;
     // const success2 = 1 + 1 === 2;
     // const success3 = 1 + 1 === 2;
