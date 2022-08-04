@@ -26,22 +26,46 @@ const steps = [
 function App() {
   const [data, setData] = React.useState([]);
   React.useEffect(() => {}, [data]);
-  console.log("thedata", data);
+  // console.log("thedata", data);
 
-  const handlePromise = async () => {
+  const handlePromise = async (data) => {
     const success = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
+    const success2 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
+    const success3 = (Math.floor(Math.random() * 2) + 1) % 2 === 0;
+    // const success = 1 + 1 === 2;
+    // const success2 = 1 + 1 === 2;
+    // const success3 = 1 + 1 === 2;
+    // Promise.all([
+    //   mockApiCall(success),
+    //   mockApiCall(success2),
+    //   mockApiCall(success3),
+    // ])
+    //   .then((responses) => {
+    //     console.log("responses", responses);
+    //   })
+    //   .catch((error) => {
+    //     console.log("error: ", error);
+    //   });
     try {
       const res = await mockApiCall(success);
       console.log("success", res);
+      return res;
     } catch (error) {
       console.log("error", error);
+      return error;
     }
   };
 
   return (
     <div className="App">
       <div>HOMEPAGE</div>
-      <ProgessIndicator steps={steps} setData={setData} validator={isJSON} />
+      <ProgessIndicator
+        steps={steps}
+        data={data}
+        setData={setData}
+        validator={isJSON}
+        onSubmit={handlePromise}
+      />
       {/* <form> */}
       <input
         type="text"

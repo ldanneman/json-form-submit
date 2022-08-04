@@ -2,13 +2,14 @@ import React from "react";
 import "./progressIndicator.css";
 import Button from "../Button/Button";
 
-function ProgessIndicator({ steps, data, setData, validator }) {
-  console.log(steps.length);
+function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
   const [currentStep, setCurrentStep] = React.useState(0);
   const [currentData, setCurrentData] = React.useState("");
-  // const [data, setData] = React.useState([]);
-  const Item = steps[currentStep].component;
+  const [results, setResults] = React.useState([]);
+  
+  const Item = steps[currentStep]?.component || null;
 
+  React.useEffect(() => {}, [results]);
   const onNext = () => {
     if (currentData.length === 0 || !validator(currentData)) {
       alert("Your submission is invalid");
@@ -19,8 +20,6 @@ function ProgessIndicator({ steps, data, setData, validator }) {
     setCurrentData("");
   };
 
-  console.log("current step", currentStep);
-
   const onBack = (e) => {
     setCurrentData("");
     setCurrentStep((prevStep) => prevStep - 1);
@@ -28,6 +27,26 @@ function ProgessIndicator({ steps, data, setData, validator }) {
       prevData.filter((_, index) => index !== prevData.length - 1)
     );
   };
+
+  const handleSubmit = async () => {
+    if (currentData.length === 0 || !validator(currentData)) {
+      alert("Your submission is invalid");
+      return;
+    }
+    for (let i = 0; i < data.length; i++) {
+      const result = await onSubmit(data[i].data);
+      setResults((prevResults) => [...prevResults, result]);
+    }
+    setCurrentStep(steps.length);
+  };
+
+  const handleReset = () => {
+    setCurrentStep(0);
+    setResults([]);
+    setData([]);
+    setCurrentData("");
+  };
+
   return (
     <>
       <div className="stepper-wrapper">
@@ -46,10 +65,30 @@ function ProgessIndicator({ steps, data, setData, validator }) {
           </div>
         ))}
       </div>
-      <Item
-        onChange={(e) => setCurrentData(e.target.value)}
-        value={currentData}
-      />
+      {currentStep !== steps.length && (
+        <Item
+          onChange={(e) => setCurrentData(e.target.value)}
+          value={currentData}
+        />
+      )}
+
+      {currentStep === steps.length && (
+        <div className="results-wrapper">
+          {results.map((result, i) => (
+            <div>
+              <div
+                className="result"
+                style={{
+                  ...(result.message
+                    ? { backgroundColor: "#4bb543" }
+                    : { backgroundColor: "red" }),
+                }}
+              ></div>
+              {result?.message ? <div>Completed</div> : <div>Failed</div>}
+            </div>
+          ))}
+        </div>
+      )}
 
       <div>
         {currentStep !== steps.length ? (
@@ -61,14 +100,14 @@ function ProgessIndicator({ steps, data, setData, validator }) {
                 </Button>
               )}
               {currentStep === steps.length - 1 ? (
-                <Button onClick={setCurrentStep(steps.length)}>Submit</Button>
+                <Button onClick={handleSubmit}>Submit</Button>
               ) : (
                 <Button onClick={onNext}>Next</Button>
               )}
             </div>
           </div>
         ) : (
-          <Button onClick={() => setCurrentStep(0)}>Reset</Button>
+          <Button onClick={handleReset}>Reset</Button>
         )}
       </div>
     </>
