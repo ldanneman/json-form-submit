@@ -57,6 +57,7 @@ function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
         <div className="stepper-wrapper">
           {steps.map((step, i) => (
             <div
+              key={i}
               className={
                 currentStep === i
                   ? "stepper-item active"
@@ -80,7 +81,7 @@ function ProgessIndicator({ steps, data, setData, validator, onSubmit }) {
         {currentStep === steps.length && (
           <div className="results-wrapper">
             {results.map((result, i) => (
-              <div className="results-container">
+              <div key={i} className="results-container">
                 <div
                   className="result"
                   style={{
